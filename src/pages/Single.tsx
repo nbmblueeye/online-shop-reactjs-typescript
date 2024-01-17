@@ -52,7 +52,7 @@ const Single = () => {
   return (
     <div className="container">
       <HelmetSEO title={Object.keys(products.product).length > 0 ? products.product.title: "No Product"} keywords={Object.keys(products.product).length > 0 ? products.product.category:""}/>
-      <BreadCrumb cate={Object.keys(products.product).length > 0 ? products.product.category.charAt(0).toUpperCase() + products.product.category.slice(1):""} product={Object.keys(products.product).length > 0 ? products.product.title: "No Product"}/>
+      <BreadCrumb cate={Object.keys(products.product).length > 0 ? products.product.category:""} product={Object.keys(products.product).length > 0 ? products.product.title:"No Product"}/>
       <div className="single-content" ref={productRef}>
         { 
           Object.keys(products.product).length > 0 ?
