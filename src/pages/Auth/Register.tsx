@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
 import BreadCrumb from "../../components/BreadCrumb";
 import { User } from "../../types/type";
+import HelmetSEO from "../../components/HelmetSEO";
 
 const Register = () => {
  
@@ -14,6 +15,7 @@ const Register = () => {
 
     return (
         <div className="container">
+            <HelmetSEO title="Register" keywords="Electronics, Jewelery, Men's clothing, Women's clothing"/>
             <BreadCrumb cate="Register" product=""/>
             <div className="register-content" ref={registerRef}>
                 <form className="form-control">

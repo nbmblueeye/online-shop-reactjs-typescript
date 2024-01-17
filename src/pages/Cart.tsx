@@ -4,6 +4,7 @@ import { removeSelectedProduct } from "../features/productSlide";
 import ProductQuantity from "../components/ProductQuantity";
 import PriceFormat from "../utils/PriceFormat";
 import BreadCrumb from "../components/BreadCrumb";
+import HelmetSEO from "../components/HelmetSEO";
 
 const Cart = () => {
     
@@ -16,6 +17,7 @@ const Cart = () => {
 
     return (
         <div className="container">
+            <HelmetSEO title="Cart" keywords="Electronics, Jewelery, Men's clothing, Women's clothing"/>
             <BreadCrumb cate="Cart" product=""/>
             <div className="cart-content">
                 <h1 className="page-title">Cart Page</h1>

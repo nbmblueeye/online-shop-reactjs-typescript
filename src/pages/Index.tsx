@@ -3,6 +3,7 @@ import { removeSelectedProduct, setProducts } from "../features/productSlide";
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import PaginationPost from "../components/PaginationPost";
 import HomeBanner from "../components/HomeBanner";
+import HelmetSEO from "../components/HelmetSEO";
 
 const Index = () => {
 
@@ -27,6 +28,7 @@ const Index = () => {
 
   return (
     <>
+      <HelmetSEO title="Online Shop" keywords="Electronics, Jewelery, Men's clothing, Women's clothing"/>
       <HomeBanner/>
       <div className="product-lists container">
         {

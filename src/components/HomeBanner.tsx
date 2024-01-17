@@ -1,8 +1,4 @@
-import React from 'react'
-
-type Props = {}
-
-const HomeBanner = (props: Props) => {
+const HomeBanner = () => {
   return (
     <div className="product-home-banner-wrapper">
       <div className="container">

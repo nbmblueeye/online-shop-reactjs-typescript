@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import PaginationPost from "../components/PaginationPost";
 import UpperCaseFirst from "../utils/UpperCaseFirst";
 import BreadCrumb from "../components/BreadCrumb";
+import HelmetSEO from "../components/HelmetSEO";
 
 const Categories = () => {
 
@@ -39,7 +40,8 @@ const Categories = () => {
 
   return (
     <div className="container">
-      <BreadCrumb cate={category} product=""/>
+      <HelmetSEO title={category ? category.charAt(0).toUpperCase() + category.slice(1):""} keywords={category ? category:""}/>
+      <BreadCrumb cate={category ? category.charAt(0).toUpperCase() + category.slice(1):""} product=""/>
       <div className="product-lists" ref = {categoryRef}>
         <h1 className="page-title"><UpperCaseFirst text={category ? category:"Category"}/></h1>
         {

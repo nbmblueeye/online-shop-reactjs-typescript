@@ -10,24 +10,27 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
+import { HelmetProvider } from 'react-helmet-async';
 
 
 function App() {
   return (
-     <Router>
+    <HelmetProvider>
+      <Router>
         <Routes>
           <Route path='/' element={<Layout/>}>
-              <Route index element={<Index/>}/>
-              <Route path="/:productId" element={<Single/>}/>
-              <Route path="/category/:category" element={<Categories/>}/>
-              <Route path="/cart" element={<Cart/>}/>
-              <Route path="/register" element={<Register/>}/>
-              <Route path="/login" element={<Login/>}/>
-              <Route path='*' element={<NotFound/>} />
+            <Route index element={<Index/>}/>
+            <Route path="/:productId" element={<Single/>}/>
+            <Route path="/category/:category" element={<Categories/>}/>
+            <Route path="/cart" element={<Cart/>}/>
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path='*' element={<NotFound/>} />
           </Route>
         </Routes>
         <ToastContainer/>
-     </Router>
+      </Router>
+     </HelmetProvider>
   )
 }
 

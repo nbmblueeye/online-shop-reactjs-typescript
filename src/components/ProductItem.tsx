@@ -1,5 +1,3 @@
-import { useAppDispatch } from "../app/hooks";
-import { setProduct } from "../features/productSlide";
 import PriceFormat from "../utils/PriceFormat";
 import StarRating from "../utils/StarRating";
 import UpperCaseFirst from "../utils/UpperCaseFirst";
