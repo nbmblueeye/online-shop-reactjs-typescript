@@ -3,7 +3,7 @@ import { ImSpinner11 } from "react-icons/im";
 type Props = {
     aFunction:(data:any) => void, 
     data: any
-    text: string, 
+    text: any, 
     loading:boolean,
 }
 

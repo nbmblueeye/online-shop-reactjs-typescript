@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { removeSelectedProduct, setProducts } from "../features/productSlide";
+import { setProducts } from "../features/productSlide";
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import PaginationPost from "../components/PaginationPost";
 import HomeBanner from "../components/HomeBanner";
@@ -12,18 +12,10 @@ const Index = () => {
 
   useEffect(() => {
     dispatch(setProducts());
-    dispatch(removeSelectedProduct());
   },[]);
 
-  let data:any = "";
   if(products.isLoading){
-    data = <div className="loader-box"><div className="loader"></div></div>
-  }else{
-    if(products.products.length > 0 ){
-      data = <PaginationPost/>
-    }else{
-      data = <p>No Products available</p>
-    }
+    return <div className="loader-box"><div className="loader"></div></div>
   }
 
   return (
@@ -32,7 +24,10 @@ const Index = () => {
       <HomeBanner/>
       <div className="product-lists container">
         {
-          data
+          products.products.length > 0 ?
+          <PaginationPost products={products.products}/>
+        :
+          <p>No Products available</p>
         }
       </div>
     </>

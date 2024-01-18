@@ -435,7 +435,7 @@ a:focus-visible
     width: 100%;
     height: 100%;
     display: grid;
-    gap: 2rem;
+    gap: 3rem;
     grid-template-columns: repeat(1,1fr);
    
     .product-item{
@@ -448,7 +448,7 @@ a:focus-visible
       overflow: hidden;
       .product-item-img-box{
           width: 100%;
-          height: 380px;
+          max-height: 300px;
           overflow: hidden;
           margin-bottom: 1rem;
           cursor: pointer;
@@ -630,7 +630,6 @@ a:focus-visible
   }
 
  // ============================== Product Cart Page ========================= 
-
    .cart-content{
       .cart-image-box{
         width: 100px;
@@ -677,6 +676,19 @@ a:focus-visible
           text-align: center;
           background-color: var(--navbar-bg-color);
           color: var(--white-color);
+        }
+
+        table td button.delete-button{
+          width: 40px;
+          height: 40px;
+          border: 1px solid var(--note-color);
+          border-radius: 2px;
+          color: var(--note-color);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+          cursor: pointer;
         }
 
         .cart-total-title{
@@ -732,16 +744,6 @@ a:focus-visible
     display: flex;
     justify-content: flex-start;
     margin: 2rem 0;
-    .add-product-to-cart-button{
-      padding: 0.5rem 0.75rem;
-      width: 200px;
-      font-size: 16px;
-      color: var(--black-light-color);
-      background-color: var(--active-color);
-      border: 1px solid var(--active-color);
-      border-radius: 2px;
-      cursor: pointer;
-    }
   }
 // ============================== End Product Quantity Section====================
 
@@ -809,8 +811,8 @@ a:focus-visible
   .loading-button{
     font-size: 16px;
     font-weight: 400;
-    color: var(--black-color);
-    background-color: var(--white-color);
+    color: var(--white-color);
+    background-color: var(--black-light-color);
     border: 1px solid var(--black-color);
     border-radius: 2px;
     cursor: pointer;

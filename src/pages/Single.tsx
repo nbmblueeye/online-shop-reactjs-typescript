@@ -4,7 +4,7 @@ import PriceFormat from "../utils/PriceFormat";
 import StarRating from "../utils/StarRating";
 import UpperCaseFirst from "../utils/UpperCaseFirst";
 import { useEffect, useRef, useState } from "react";
-import { addProductToCart, setProduct } from "../features/productSlide";
+import { addProductToCart, removeSelectedProduct, setProduct } from "../features/productSlide";
 import { toast } from 'react-toastify';
 import ProductQuantity from "../components/ProductQuantity";
 import { ProductCart } from "../types/type";
@@ -17,7 +17,7 @@ const Single = () => {
   const { productId } = useParams();
   const products = useAppSelector((state) => state.products);
   const dispatch  = useAppDispatch();
-
+ 
   const productRef = useRef<HTMLDivElement | null>(null);
   const [adding, setAdding] = useState(false);
 
@@ -28,17 +28,20 @@ const Single = () => {
         top:productRef.current?.scrollTop,
         behavior:"smooth"
       })
+    } 
+    return () => {
+      dispatch(removeSelectedProduct());
     }
   },[productId]);
-
+ 
   const addToCartHandle = (item:ProductCart) => {
     if(products.productCart.find(product => product.id == item.id)){
       toast.error("Product was already added to Cart");
       return false;
     }else{
       dispatch( addProductToCart(item));
-      toast.success("Product is added to Cart");
       setAdding(true);
+      toast.success("Product is added to Cart");
       setTimeout(() =>{
         setAdding(false);
       },1000);

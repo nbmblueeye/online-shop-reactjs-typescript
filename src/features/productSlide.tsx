@@ -7,6 +7,7 @@ interface productType {
     isError: boolean,
     isSuccess: boolean,
     products: Product[],
+    searchProducts: Product[],
     product: ProductCart,
     productCart: ProductCart[]
 }
@@ -16,6 +17,7 @@ const initialProduct:productType = {
     isError: false,
     isSuccess: false,
     products: [],
+    searchProducts: [],
     product: {} as ProductCart,
     productCart: [],
 }
@@ -85,6 +87,7 @@ const productSlider = createSlice({
         removeSelectedProduct:(state) =>{
             state.product = initialProduct.product;
         },
+
         addProductQuantity:(state, action:PayloadAction<[{id:string},{isCart:boolean}]>) =>{
             if(!action.payload[1].isCart){
                 if(state.product.id == action.payload[0].id){
@@ -99,6 +102,7 @@ const productSlider = createSlice({
                 }
             }
         },
+
         minusProductQuantity:(state, action:PayloadAction<[{id:string},{isCart:boolean}]>) =>{
             if(!action.payload[1].isCart){
                 if(state.product.id == action.payload[0].id){
@@ -113,9 +117,26 @@ const productSlider = createSlice({
                 }
             }
         },
+
         addProductToCart: (state, action:PayloadAction<ProductCart>) =>{
             if(Object.keys(state.product).length > 0){   
                 state.productCart = [...state.productCart, action.payload];
+            }
+        },
+
+        remoreProductFromCart: (state, action:PayloadAction<string>) => {
+            let isInCart = state.productCart.find(product => product.id == action.payload);
+            if(isInCart){
+                state.productCart = state.productCart.filter(product => product.id != action.payload);
+            }
+        },
+
+        searchProducts: (state, action:PayloadAction<string>) => {
+            if(action.payload){
+                let searchResults = state.products.filter(product => product.title.includes((action.payload)) || product.category.toLowerCase().includes((action.payload).toLowerCase()));
+                state.searchProducts = searchResults;
+            }else{
+                state.searchProducts = [];
             }
         }
     },
@@ -221,5 +242,5 @@ const productSlider = createSlice({
     }
  })
 
-export const { removeSelectedProduct, addProductQuantity, minusProductQuantity,addProductToCart } = productSlider.actions;
+export const { removeSelectedProduct, addProductQuantity, minusProductQuantity, addProductToCart, remoreProductFromCart, searchProducts } = productSlider.actions;
 export default productSlider.reducer;

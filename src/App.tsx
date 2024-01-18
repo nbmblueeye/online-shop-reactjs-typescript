@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
 import { HelmetProvider } from 'react-helmet-async';
+import Search from './pages/Search';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/cart" element={<Cart/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/search" element={<Search/>}/>
             <Route path='*' element={<NotFound/>} />
           </Route>
         </Routes>

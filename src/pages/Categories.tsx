@@ -18,8 +18,6 @@ const Categories = () => {
     useEffect(() => {
         if(category){
             dispatch(setProductsByCategory(category));
-            dispatch(removeSelectedProduct());
-
             window.scrollTo({
               top:categoryRef.current?.scrollTop,
               behavior:"smooth"
@@ -27,29 +25,25 @@ const Categories = () => {
         }
     },[category]);
   
-    let data:any = "";
     if(products.isLoading){
-      data = <div className="loader-box"><div className="loader"></div></div>
-    }else{
-      if(products.products.length > 0 ){
-        data = <PaginationPost/>
-      }else{
-        data = <p>No Products available</p>
-      }
+      return <div className="loader-box"><div className="loader"></div></div>
     }
 
-  return (
-    <div className="container">
-      <HelmetSEO title={category ? category.charAt(0).toUpperCase() + category.slice(1):""} keywords={category ? category:""}/>
-      <BreadCrumb cate={category ? category.charAt(0).toUpperCase() + category.slice(1):""} product=""/>
-      <div className="product-lists" ref = {categoryRef}>
-        <h1 className="page-title"><UpperCaseFirst text={category ? category:"Category"}/></h1>
-        {
-            data
-        }
+    return (
+      <div className="container">
+        <HelmetSEO title={category ? category.charAt(0).toUpperCase() + category.slice(1):""} keywords={category ? category:""}/>
+        <BreadCrumb cate={category ? category.charAt(0).toUpperCase() + category.slice(1):""} product=""/>
+        <div className="product-lists" ref = {categoryRef}>
+          <h1 className="page-title"><UpperCaseFirst text={category ? category:"Category"}/></h1>
+          {
+            products.products.length > 0 ?
+            <PaginationPost products={products.products}/>
+          :
+            <p>No Products available</p>
+          }
+        </div>
       </div>
-    </div>
-  )
+    )
 }
 
 export default Categories

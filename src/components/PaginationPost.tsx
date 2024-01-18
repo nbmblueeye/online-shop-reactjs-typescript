@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { useAppSelector } from "../app/hooks";
 import ProductItem from "./ProductItem";
+import { Product } from "../types/type";
 
-const PaginationPost = () => {
+type Props = {
+  products: Product[]
+}
 
-    const products = useAppSelector((state) => state.products.products);
+const PaginationPost = ({products}:Props) => {
+
     const [postPerPage] = useState(12);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);

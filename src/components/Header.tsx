@@ -2,12 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { BsCart4 } from "react-icons/bs";
-
 import { IoMdClose } from "react-icons/io";
 import { useAppSelector } from "../app/hooks";
 import Auth from "./Auth";
-
-
+import SearchTool from "./SearchTool";
 
 const Header = () => {
 
@@ -32,10 +30,7 @@ const Header = () => {
                     <IoMdClose />
                   </button>
                 </div>
-                <form className="search-form">
-                  <input type="text" className="search-input" id="search-input" name="search-input" placeholder="Search..."/>
-                  <button className="search-button" type="submit">Search</button>
-                </form>
+                <SearchTool/>
               </div>
             </div>
             <ul className="nav-menu">
